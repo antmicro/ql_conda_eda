@@ -1,0 +1,34 @@
+#!/bin/bash
+TOP=$(pwd)
+
+cat > recipe_append.yaml <<EOF
+extra:
+  maintainers:
+    - Kishore 'Kumar' <kkumar@quicklogic.com>
+  travis:
+    job_id:  $TRAVIS_JOB_ID
+    job_num: $TRAVIS_JOB_NUMBER
+    type:    $TRAVIS_EVENT_TYPE
+  recipe:
+    repo:     'https://github.com/$TRAVIS_REPO_SLUG'
+    branch:   $TRAVIS_BRANCH
+    commit:   $TRAVIS_COMMIT
+    describe: $GITREV
+    date:     $DATESTR
+EOF
+if [ ! -z "${TOOLCHAIN_ARCH}" ]; then
+	cat >> recipe_append.yaml <<EOF
+  toolchain_arch: ${TOOLCHAIN_ARCH}
+EOF
+fi
+
+for meta in $(find -name meta.yaml); do
+	(
+		cd $(dirname $meta);
+		if [ $TRAVIS_OS_NAME != 'windows' ]; then
+			ln -sf $(python3 -c "import os.path; print(os.path.relpath('$TOP/recipe_append.yaml'))") recipe_append.yaml
+		else
+			ln -sf $(python -c "import os.path; path=os.path.abspath('$TOP/recipe_append.yaml'); print(path[:2] + path[4:])") recipe_append.yaml
+		fi
+	)
+done
