@@ -1,0 +1,56 @@
+language: shell
+
+stages:
+  - "EDA Tools - Simulation"
+  - "EDA Tools - Synthesis"
+  - "EDA Tools - PnR"
+
+jobs:
+ include:
+ # EDA Tools - Simulation
+  - stage: "EDA Tools - Simulation"
+    os: linux
+    dist: xenial
+    env:
+    - PACKAGE=iverilog
+
+ # EDA Tools - Synthesis
+  # Linux
+  - stage: "EDA Tools - Synthesis"
+    os: linux
+    dist: xenial
+    env:
+    - PACKAGE=yosys CUSTOM_LABEL=ql
+  - stage: "EDA Tools - Synthesis"
+    os: linux
+    dist: xenial
+    env:
+    - PACKAGE=yosys-plugins CUSTOM_LABEL=ql
+
+ # EDA Tools - Place and Route
+  - stage: "EDA Tools - PnR"
+    os: linux
+    dist: xenial
+    env:
+    - PACKAGE=vtr
+
+before_install:
+ - source $TRAVIS_BUILD_DIR/.travis/common.sh
+ - bash $TRAVIS_BUILD_DIR/.travis/fixup-git.sh
+ - source $TRAVIS_BUILD_DIR/.travis/common.sh
+
+install:
+ - ./.travis/install.sh
+
+script:
+ - bash $TRAVIS_BUILD_DIR/.travis/script.sh
+
+after_failure:
+ - bash $TRAVIS_BUILD_DIR/.travis/after_failure.sh
+
+after_success:
+ - bash $TRAVIS_BUILD_DIR/.travis/after_success.sh
+
+cache:
+  directories:
+   - $HOME/.conda/pkgs
