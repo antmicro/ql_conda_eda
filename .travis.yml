@@ -32,7 +32,7 @@ jobs:
     os: linux
     dist: xenial
     env:
-    - PACKAGE=vtr
+    - PACKAGE=vtr CUSTOM_LABEL=ql
 
 before_install:
  - source $TRAVIS_BUILD_DIR/.travis/common.sh
