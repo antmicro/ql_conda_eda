@@ -6,6 +6,9 @@ set -e
 # Close the after_success fold travis has created already.
 travis_fold end after_success
 
+ANACONDA_TOKEN="Qu-54f16daa-a80a-4df4-abd8-a8ec53676b69"
+ANACONDA_USER="Quicklogic-Corp"
+
 if [[ $UPLOAD == "no-upload" ]]; then
     echo "Job without upload..."
 else

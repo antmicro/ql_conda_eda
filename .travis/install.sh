@@ -11,7 +11,7 @@ mkdir -p $BASE_PATH
 hash -r
 conda config --set always_yes yes --set changeps1 no
 conda install pexpect
-conda config --add channels antmicro
+conda config --add channels Quicklogic-Corp
 conda config --add channels $(echo $TRAVIS_REPO_SLUG | sed -e's@/.*$@@')
 
 if [ -e $PACKAGE/condarc_$TRAVIS_OS_NAME ]; then
