@@ -2,7 +2,6 @@
 
 set -x
 set -e
-TRAVIS_OS_NAME=Linux
 
 CONDA_PATH=${1:-~/conda}
 if [ $TRAVIS_OS_NAME = 'windows' ]; then
