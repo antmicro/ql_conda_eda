@@ -19,6 +19,7 @@ CURRENT_GITREV="$(git rev-parse HEAD)"
 git checkout -b $TRAVIS_BRANCH $CURRENT_GITREV
 git tag -l
 git status -v
-git describe --long
+#git describe --long
+git describe --always
 set +x
 end_section "environment.git"
