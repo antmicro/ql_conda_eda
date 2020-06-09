@@ -6,7 +6,8 @@ set -e
 # Git repo fixup
 start_section "environment.git" "Setting up ${YELLOW}git checkout${NC}"
 set -x
-git fetch --unshallow || true
+#git fetch --unshallow || true
+git fetch --depth=4
 git fetch --tags
 git submodule update --recursive --init
 git submodule foreach git submodule update --recursive --init
