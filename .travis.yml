@@ -1,38 +1,38 @@
 language: shell
 
 stages:
-  - "EDA Tools - Simulation"
-  - "EDA Tools - Synthesis"
+  #  - "EDA Tools - Simulation"
+  #- "EDA Tools - Synthesis"
   - "EDA Tools - PnR"
 
 jobs:
  include:
- # EDA Tools - Simulation
-  - stage: "EDA Tools - Simulation"
-    os: linux
-    dist: xenial
-    env:
-    - PACKAGE=iverilog
-
- # EDA Tools - Synthesis
-  # Linux
-  - stage: "EDA Tools - Synthesis"
-    os: linux
-    dist: xenial
-    env:
-    - PACKAGE=yosys CUSTOM_LABEL=ql
-  - stage: "EDA Tools - Synthesis"
-    os: linux
-    dist: xenial
-    env:
-    - PACKAGE=yosys-plugins CUSTOM_LABEL=ql
-
- # EDA Tools - Place and Route
-  - stage: "EDA Tools - PnR"
-    os: linux
-    dist: xenial
-    env:
-    - PACKAGE=vtr CUSTOM_LABEL=ql
+   # # EDA Tools - Simulation
+   #  - stage: "EDA Tools - Simulation"
+   #    os: linux
+   #    dist: xenial
+   #    env:
+   #    - PACKAGE=iverilog
+   #
+   # # EDA Tools - Synthesis
+   #  # Linux
+   #  - stage: "EDA Tools - Synthesis"
+   #    os: linux
+   #    dist: xenial
+   #    env:
+   #    - PACKAGE=yosys CUSTOM_LABEL=ql
+   #  - stage: "EDA Tools - Synthesis"
+   #    os: linux
+   #    dist: xenial
+   #    env:
+   #    - PACKAGE=yosys-plugins CUSTOM_LABEL=ql
+   #
+   # # EDA Tools - Place and Route
+   #  - stage: "EDA Tools - PnR"
+   #    os: linux
+   #    dist: xenial
+   #    env:
+   #    - PACKAGE=vtr CUSTOM_LABEL=ql
 
   - stage: "EDA Tools - PnR"
     os: linux
