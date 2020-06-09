@@ -34,6 +34,12 @@ jobs:
     env:
     - PACKAGE=vtr CUSTOM_LABEL=ql
 
+  - stage: "EDA Tools - PnR"
+    os: linux
+    dist: xenial
+    env:
+    - PACKAGE=vtr-no-gui CUSTOM_LABEL=ql
+
 before_install:
  - source $TRAVIS_BUILD_DIR/.travis/common.sh
  - bash $TRAVIS_BUILD_DIR/.travis/fixup-git.sh
