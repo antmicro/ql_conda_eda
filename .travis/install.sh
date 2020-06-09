@@ -12,7 +12,11 @@ hash -r
 conda config --set always_yes yes --set changeps1 no
 conda install pexpect
 conda config --add channels Quicklogic-Corp
-conda config --add channels $(echo $TRAVIS_REPO_SLUG | sed -e's@/.*$@@')
+if [[ -z $CUSTOM_LABEL ]]; then
+    conda config --add channels $(echo $TRAVIS_REPO_SLUG | sed -e's@/.*$@@')
+else
+    conda config --add channels $(echo $TRAVIS_REPO_SLUG | sed -e's@/.*$@@')/label/$CUSTOM_LABEL
+fi
 
 if [ -e $PACKAGE/condarc_$TRAVIS_OS_NAME ]; then
 	export PACKAGE_CONDARC=$PACKAGE/condarc_$TRAVIS_OS_NAME
