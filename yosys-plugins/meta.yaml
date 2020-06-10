@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 source:
-  git_url: https://github.com/antmicro/yosys-symbiflow-plugins.git
+  git_url: https://github.com/QuickLogic-Corp/yosys-symbiflow-plugins.git
   git_rev: ql-ios
 
 build:
