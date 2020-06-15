@@ -27,18 +27,18 @@ jobs:
    #    env:
    #    - PACKAGE=yosys-plugins CUSTOM_LABEL=ql
    #
-   # # EDA Tools - Place and Route
-   #  - stage: "EDA Tools - PnR"
-   #    os: linux
-   #    dist: xenial
-   #    env:
-   #    - PACKAGE=vtr CUSTOM_LABEL=ql
+ # EDA Tools - Place and Route
+  - stage: "EDA Tools - PnR"
+    os: linux
+    dist: xenial
+    env:
+    - PACKAGE=vtr CUSTOM_LABEL=ql
 
   - stage: "EDA Tools - PnR"
     os: linux
     dist: xenial
     env:
-    - PACKAGE=vtr-no-gui CUSTOM_LABEL=ql
+    - PACKAGE=vtr-gui CUSTOM_LABEL=ql
 
 before_install:
  - source $TRAVIS_BUILD_DIR/.travis/common.sh
