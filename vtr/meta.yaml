@@ -20,30 +20,15 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - python  {{ python }}
   host:
-    - bison 3.4
-    - cairo
+    - bison
     - cmake
     - flex
-    - fontconfig
-    - ncurses
     - pkg-config
-    - readline
-    - tk
-    - xorg-libice
-    - xorg-libsm
-    - xorg-libx11
-    - xorg-libxcb
-    - xorg-libxext
-    - xorg-libxft
+    - tbb
+    - tbb-devel
   run:
-    - readline
-    - tk
-    - cairo
-    - fontconfig
-    - xorg-libx11
-    - xorg-libxft
+    - tbb
 
 #test:
 #  commands:
