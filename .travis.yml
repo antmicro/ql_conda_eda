@@ -3,6 +3,7 @@ language: shell
 stages:
   - "EDA Tools - Simulation"
   - "EDA Tools - Synthesis"
+  - "EDA Tools - Synthesis Addons"
   - "EDA Tools - PnR"
 
 jobs:
@@ -21,7 +22,7 @@ jobs:
     dist: xenial
     env:
     - PACKAGE=yosys CUSTOM_LABEL=ql
-  - stage: "EDA Tools - Synthesis"
+  - stage: "EDA Tools - Synthesis Addons"
     os: linux
     dist: xenial
     env:
